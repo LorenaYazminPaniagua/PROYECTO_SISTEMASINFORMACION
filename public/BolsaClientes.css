@@ -1,0 +1,227 @@
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #f4ede7;
+    --card: #fffdfb;
+    --text: #3a2d25;
+    --accent: #7a4e2e;
+    --accent-soft: #b58763;
+    --muted: #9b887e;
+    --radius: 18px;
+    --shadow-card: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* ===== LAYOUT GENERAL ===== */
+.app {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 40px;
+    min-height: 100vh;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* ===== TOPBAR ===== */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.top-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.btn-top {
+    padding: 10px 20px;
+    border-radius: 12px;
+    background: var(--accent-soft);
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+    transition: 0.3s;
+    text-align: center;
+}
+
+.btn-top:hover {
+    background: var(--accent);
+    transform: translateY(-2px);
+}
+
+/* ===== PERFIL ===== */
+.profile {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.profile-name {
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--accent);
+}
+
+.profile-role {
+    font-size: 14px;
+    color: var(--muted);
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: var(--shadow-card);
+}
+
+/* ===== TABLA CARRITO ===== */
+.table-section {
+    overflow-x: auto;
+}
+
+.devoluciones-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+    margin-top: 20px;
+}
+
+.devoluciones-table th,
+.devoluciones-table td {
+    padding: 16px 18px;
+    text-align: left;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.devoluciones-table th {
+    background: var(--accent-soft);
+    color: #fff;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+/* ===== BOTONES ===== */
+.btn-detalle {
+    padding: 8px 14px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-detalle:hover {
+    background: var(--accent-soft);
+}
+
+.btn-nueva-devolucion {
+    padding: 12px 18px;
+    margin-right: 10px;
+    background: var(--accent);
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-nueva-devolucion:hover {
+    background: var(--accent-soft);
+}
+
+/* ===== TOTAL Y ACCIONES ===== */
+.total-actions-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.total-actions-container .stat-card {
+    min-width: 200px;
+    text-align: center;
+}
+
+.total-actions-container .action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.stat-card {
+    background: var(--card);
+    padding: 20px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+    display: inline-block;
+}
+
+.site-footer {
+  margin-top: auto; /* siempre abajo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0px;
+  color: #985008;
+  font-size: 0.9rem;
+  background-color: transparent;
+}
+
+.site-footer p {
+  margin: 0;          /* quitar márgenes por defecto */
+  padding-top: 25px;   /* empuja el texto hacia abajo */
+  line-height: 0.8;   /* aumenta la altura de la línea */
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+    .topbar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+    }
+
+    .top-buttons {
+        justify-content: flex-start;
+    }
+
+    .profile {
+        justify-content: flex-end;
+    }
+}

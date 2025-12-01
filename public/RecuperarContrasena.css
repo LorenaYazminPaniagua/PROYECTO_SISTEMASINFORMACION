@@ -1,0 +1,216 @@
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #f4ede7;
+  --card: #fffdfb;
+  --text: #3a2d25;
+  --accent: #7a4e2e;
+  --accent-soft: #b58763;
+  --muted: #9b887e;
+  --radius: 18px;
+  --shadow-card: 0 6px 20px rgba(0,0,0,0.06);
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* ===== BODY ===== */
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 16px;
+  padding: 20px;
+}
+
+/* ===== PAGE LAYOUT ===== */
+.page {
+  display: flex;
+  width: 100%;
+  max-width: 1100px;
+  height: 640px;
+  gap: 40px;
+}
+
+/* ===== LEFT COLUMN (LOGIN) ===== */
+.left {
+  flex: 0 0 420px;
+  background: var(--card);
+  padding: 40px 30px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 25px;
+}
+
+.ring {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 4px solid #d2b48c;
+  box-shadow: 0 6px 20px #d2b48c;
+  background-image: url('Imagenes/Lele.png'); /* ruta de tu logo */
+  background-size: cover; /* ajusta al círculo */
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+.logo h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* Form Card */
+.login-card {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 10px;
+}
+
+.login-card label {
+  font-size: 14px;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.login-card input[type="email"],
+.login-card input[type="password"] {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(37,37,37,0.15);
+  font-size: 14px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.login-card input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 6px 18px rgba(122,78,46,0.15);
+}
+
+/* Small row */
+.row.small {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.forgot {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.forgot:hover {
+  color: var(--accent);
+}
+
+/* Gradient Button */
+.btn {
+  padding: 12px 18px;
+  border-radius: 24px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 16px;
+  color: white;
+  transition: 0.3s;
+}
+
+.gradient {
+  background: linear-gradient(90deg, var(--accent), var(--accent-soft));
+  box-shadow: 0 8px 20px rgba(122,78,46,0.12);
+}
+
+.gradient:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* Signup link */
+.signup {
+  font-size: 14px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.signup a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.signup a:hover {
+  text-decoration: underline;
+}
+
+/* ===== RIGHT COLUMN ===== */
+.right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;  /* apila elementos verticalmente */
+  justify-content: flex-start; /* empieza desde arriba */
+  align-items: center;
+  gap: 20px; /* espacio entre imagen y footer */
+}
+
+.photo-circle {
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 40px 80px var(--accent-soft), inset 0 0 80px var(--accent-soft);
+  background-image: url('Imagenes/Lele.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.site-footer {
+  margin-top: auto; /* siempre abajo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0px;
+  color: #985008;
+  font-size: 0.9rem;
+  background-color: transparent;
+}
+
+.site-footer p {
+  margin: 0;          /* quitar márgenes por defecto */
+  padding-top: 25px;   /* empuja el texto hacia abajo */
+  line-height: 0.8;   /* aumenta la altura de la línea */
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1000px) {
+  .page {
+    flex-direction: column;
+    height: auto;
+    gap: 24px;
+    padding: 20px;
+  }
+  .left { width: 100%; }
+  .right { width: 100%; }
+  .photo-circle { width: 320px; height: 320px; margin: 0 auto; }
+}

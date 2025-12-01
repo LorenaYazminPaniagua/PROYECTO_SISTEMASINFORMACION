@@ -1,0 +1,375 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #f4ede7;
+  --card: #fffdfb;
+  --text: #3a2d25;
+
+  --accent: #7a4e2e;
+  --accent-soft: #b58763;
+  --muted: #9b887e;
+
+  --radius: 18px;
+  --shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* LAYOUT */
+.app {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 40px;
+  padding: 40px;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+  background: var(--card);
+  padding: 28px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.brand {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.brand-img {
+  width: 56px;
+  height: 56px;
+  background: #f0e5da;
+  border-radius: var(--radius);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+}
+
+.brand-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--accent);
+}
+
+.brand-sub {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.nav ul {
+  list-style: none;
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nav-item {
+  padding: 12px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--text);
+  transition: 0.2s;
+}
+
+.nav-item:hover {
+  background: rgba(0,0,0,0.04);
+}
+
+.nav-item.active {
+  background: rgba(122, 78, 46, 0.15);
+  color: var(--accent);
+}
+
+.nav-item a {
+  color: var(--text);        
+  text-decoration: none;     
+  display: flex;             
+  align-items: center;
+  gap: 10px;                 
+}
+
+.nav-item a:hover {
+  color: var(--accent);      
+}
+
+.brand-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ajusta la imagen al div sin deformar */
+  border-radius: inherit; /* Mantiene bordes redondeados del div */
+}
+
+/* ===== TOPBAR ===== */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;      /* SEPARA la barra de búsqueda */
+}
+
+.topbar .page-title {
+  font-size: 28px;           /* Tamaño más grande para destacar */
+  font-weight: 700;          /* Negrita */
+  color: var(--accent);      /* Color acorde a tu tema */
+  margin: 0;                 /* Quitar márgenes predeterminados */
+  line-height: 1.2;
+}
+
+/* Opcional: agrega un pequeño margen a la derecha para separar de los botones */
+.topbar .page-title {
+  margin-right: 20px;
+}
+
+/* Perfil */
+.top-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  position: relative;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.badge {
+  position: absolute;
+  top: -2px;
+  right: -4px;
+  background: #d9534f;
+  padding: 4px 7px;
+  color: #fff;
+  border-radius: 10px;
+  font-size: 11px;
+}
+
+.profile {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.avatar {
+  width: 46px;
+  height: 46px;
+  background: #fff;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-card);
+}
+
+/* ===== FILTROS ===== */
+.filters {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.filter-date,
+.filter-select,
+.filter-btn {
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 2px solid var(--accent-soft);
+  background: white;
+  outline: none;
+  font-size: 15px;
+}
+
+.filter-btn {
+  background: var(--accent);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.filter-btn:hover {
+  background: var(--accent-soft);
+}
+
+/* ===== GRID TARJETAS ===== */
+.grid-devoluciones {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+/* ===== TARJETA DEVOLUCIONES ===== */
+.devol-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.devol-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.devol-status {
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  color: white;
+}
+
+.pendiente { background: #d39e00; }
+.aprobada { background: #28a745; }
+.rechazada { background: #dc3545; }
+
+.devol-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.btn-detalle {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  background: var(--accent);
+  color: white;
+  transition: 0.2s;
+}
+
+.btn-detalle:hover { opacity: 0.85; }
+
+/* ===== MODAL ===== */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0,0,0,0.40);
+  z-index: 10;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-content {
+  width: 500px;
+  background: var(--card);
+  padding: 26px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modal-close {
+  float: right;
+  background: transparent;
+  border: none;
+  font-size: 26px;
+  cursor: pointer;
+  color: var(--muted);
+}
+
+.modal-close:hover {
+  color: var(--accent);
+}
+
+.modal-content h2 {
+  margin-bottom: 5px;
+  color: var(--accent);
+  font-size: 22px;
+}
+
+.modal-content h3 {
+  margin-top: 15px;
+  font-size: 18px;
+}
+
+.modal-total {
+  margin-top: 15px;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.modal-buttons {
+  margin-top: 22px;
+  display: flex;
+  gap: 10px;
+}
+
+.btn-aceptar,
+.btn-rechazar {
+  flex: 1;
+  padding: 12px;
+  border-radius: 12px;
+  color: white;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-aceptar { background: #28a745; }
+.btn-rechazar { background: #dc3545; }
+
+.btn-aceptar:hover,
+.btn-rechazar:hover {
+  opacity: 0.85;
+}
+
+.site-footer {
+  margin-top: auto; /* siempre abajo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0px;
+  color: #985008;
+  font-size: 0.9rem;
+  background-color: transparent;
+}
+
+.site-footer p {
+  margin: 0;          /* quitar márgenes por defecto */
+  padding-top: 25px;   /* empuja el texto hacia abajo */
+  line-height: 0.8;   /* aumenta la altura de la línea */
+}
+
+/* ANIMACIÓN */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(.95); }
+  to { opacity: 1; transform: scale(1); }
+}

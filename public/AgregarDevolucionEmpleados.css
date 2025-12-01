@@ -1,0 +1,240 @@
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #f4ede7;
+    --card: #fffdfb;
+    --text: #3a2d25;
+
+    --accent: #7a4e2e;
+    --accent-soft: #b58763;
+    --muted: #9b887e;
+
+    --radius: 18px;
+    --shadow-card: 0 6px 20px rgba(0,0,0,0.06);
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ===== LAYOUT ===== */
+.app {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 40px;
+    padding: 40px;
+    min-height: 100vh;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+    background: var(--card);
+    padding: 28px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.brand-img {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: var(--radius);
+    background: #f0e5da;
+}
+
+.brand-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.brand-sub {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.nav ul {
+    list-style: none;
+    margin-top: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nav-item {
+    padding: 12px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--text);
+    transition: 0.2s;
+}
+
+.nav-item:hover { background: rgba(0,0,0,0.04); }
+.nav-item.active { background: rgba(122, 78, 46, 0.15); color: var(--accent); }
+
+.nav-item a {
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-item a:hover { color: var(--accent); }
+
+.brand-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+}
+
+/* ===== MAIN ===== */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+}
+
+.topbar .page-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.top-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.profile {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.avatar {
+    width: 46px;
+    height: 46px;
+    background: #fff;
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-card);
+}
+
+/* ===== FORM ===== */
+.form-add {
+    background: var(--card);
+    padding: 30px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.input-wrap {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #f9f2eb;
+    border: 1px solid var(--muted);
+    padding: 14px;
+    border-radius: 12px;
+}
+
+.label-text {
+    color: var(--muted);
+    width: 150px;
+    font-weight: 600;
+}
+
+.input-wrap input,
+.input-wrap select {
+    border: none;
+    background: transparent;
+    outline: none;
+    width: 100%;
+    font-size: 16px;
+}
+
+/* ===== TITULOS SECUNDARIOS ===== */
+h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 20px;
+    color: var(--accent);
+}
+
+/* ===== BOTONES ===== */
+.btn-row {
+    display: flex;
+    gap: 16px;
+}
+
+.btn {
+    flex: 1;
+    padding: 14px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    transition: 0.2s;
+}
+
+.save {
+    background: var(--accent);
+    color: white;
+}
+
+.save:hover { background: var(--accent-soft); }
+
+.cancel {
+    background: #d8c5b7;
+    color: var(--text);
+}
+
+.cancel:hover { background: #c6ad98; }
+
+.site-footer {
+  margin-top: auto; /* siempre abajo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0px;
+  color: #985008;
+  font-size: 0.9rem;
+  background-color: transparent;
+}
+
+.site-footer p {
+  margin: 0;          /* quitar márgenes por defecto */
+  padding-top: 25px;   /* empuja el texto hacia abajo */
+  line-height: 0.8;   /* aumenta la altura de la línea */
+}

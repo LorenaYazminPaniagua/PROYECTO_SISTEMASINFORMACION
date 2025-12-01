@@ -133,10 +133,9 @@ $actividad = $conn->query($sqlActividad);
 
       <!-- TOP BAR -->
       <header class="topbar">
-        <input id="search"
-          class="search-input"
-          type="search"
-          placeholder="Buscar platillos, pedidos o usuarios..." />
+        <div class="search-input" style="border:none; outline:none; cursor:default;">
+           Bienvenido al perfil de cambios
+      </div>
 
         <div class="top-actions">
           <div class="profile">
@@ -146,13 +145,10 @@ $actividad = $conn->query($sqlActividad);
               <div class="profile-role">Administrador</div>
             </div>
             
-            <div class="avatar">
-                <?php if (!empty($_SESSION['Imagen'])): ?>
-                    <img src="Imagenes/<?= $_SESSION['Imagen'] ?>" alt="Usuario">
-                <?php else: ?>
-                    👤
-                <?php endif; ?>
+            <div class="profile">
+              <div class="avatar">👩‍🍳</div>
             </div>
+
           </div>
         </div>
       </header>

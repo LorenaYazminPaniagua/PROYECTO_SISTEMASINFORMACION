@@ -22,7 +22,8 @@ $estatusFiltro = $_GET['estatus'] ?? '';
 // Construir query con filtros SOLO PARA EL USUARIO LOGUEADO
 $query = "SELECT * FROM VistaPedidos WHERE idPersona = $idPersona";
 if (!empty($fechaFiltro)) {
-    $query .= " AND Fecha = '" . $conn->real_escape_string($fechaFiltro) . "'";
+    // CORREGIDO: usar DATE() para que funcione si Fecha es DATETIME
+    $query .= " AND DATE(Fecha) = '" . $conn->real_escape_string($fechaFiltro) . "'";
 }
 if (!empty($estatusFiltro)) {
     $query .= " AND Estatus = '" . $conn->real_escape_string($estatusFiltro) . "'";
@@ -194,7 +195,5 @@ document.getElementById('btnCancelar').addEventListener('click', function(){
 });
 </script>
 
-
-    
 </body>
 </html>

@@ -35,9 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['accion'])) {
             $stmt->close();
             echo json_encode(['success' => true, 'mensaje' => 'Pedido cancelado correctamente']);
         } else {
-            // intentar obtener el mensaje de error (stmt o conexión)
             $err = $stmt->error ?: $conn->error;
-            // limpiar posibles resultsets
             while ($conn->more_results() && $conn->next_result()) {}
             $stmt->close();
             echo json_encode(['success' => false, 'mensaje' => 'Error al cancelar el pedido: ' . $err]);
@@ -50,7 +48,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['accion'])) {
         $idPersonaPedido = intval($_POST['idPersonaPedido']);
         $tipoPago = 'Efectivo';
 
-        // Usar el nuevo procedimiento que recibe idPedido
         $stmt = $conn->prepare("CALL RegistrarVentaDesdePedido(?, ?, ?)");
         if (!$stmt) {
             echo json_encode(['success' => false, 'mensaje' => 'Error al preparar la consulta: ' . $conn->error]);
@@ -59,29 +56,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['accion'])) {
         $stmt->bind_param("iis", $idPedido, $idPersonaPedido, $tipoPago);
 
         if ($stmt->execute()) {
-            // limpiar todos los resultsets que el procedimiento pueda haber dejado
             while ($conn->more_results() && $conn->next_result()) {}
             $stmt->close();
             echo json_encode(['success' => true, 'mensaje' => 'Pedido atendido y venta registrada correctamente']);
         } else {
-            /*
-             * Aquí capturamos errores: cuando el procedimiento hace SIGNAL
-             * MySQL devuelve el mensaje de error en $conn->error o $stmt->error.
-             * Intentamos devolver el mensaje tal cual para mostrarlo en el frontend.
-             */
             $errorMsg = $stmt->error ?: $conn->error;
-
-            // En algunos casos mysqli devuelve la información del código de error en la conexión
-            // si es necesario, podemos añadir el código numérico también:
             $errno = $conn->errno ?: $stmt->errno;
-
-            // limpiar resultsets si hay (defensivo)
             while ($conn->more_results() && $conn->next_result()) {}
-
             $stmt->close();
-
-            // Si detectamos el código 1644 (SIGNAL con SQLSTATE personalizado) o simplemente hay mensaje,
-            // devolvemos el mensaje tal cual para que el frontend lo muestre.
             if (!empty($errorMsg)) {
                 echo json_encode(['success' => false, 'mensaje' => $errorMsg]);
             } else {
@@ -104,7 +86,8 @@ $estatusFiltro = $_GET['estatus'] ?? '';
 // Construir query con filtros
 $query = "SELECT * FROM VistaPedidos WHERE 1=1";
 if (!empty($fechaFiltro)) {
-    $query .= " AND Fecha = '" . $conn->real_escape_string($fechaFiltro) . "'";
+    // CORREGIDO: usar DATE() para que funcione si Fecha es DATETIME
+    $query .= " AND DATE(Fecha) = '" . $conn->real_escape_string($fechaFiltro) . "'";
 }
 if (!empty($estatusFiltro)) {
     $query .= " AND Estatus = '" . $conn->real_escape_string($estatusFiltro) . "'";

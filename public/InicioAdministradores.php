@@ -164,7 +164,7 @@ $actividad = $conn->query($sqlActividad);
         <div class="cards">
           <article class="card primary-card">
             <div>
-              <h3 class="card-label">Ventas hoy</h3>
+              <h3 class="card-label">Ventas</h3>
               <div class="card-value" id="ventas-hoy">$<?= number_format($ventasHoy, 2) ?></div>
               <div class="card-note">
                 Respecto ayer <span class="delta" id="ventas-delta"><?= $delta ?>%</span>

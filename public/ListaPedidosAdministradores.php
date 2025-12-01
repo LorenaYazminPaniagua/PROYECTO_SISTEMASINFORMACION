@@ -37,12 +37,17 @@ $estatusFiltro = $_GET['estatus'] ?? '';
 
 // Construir query con filtros
 $query = "SELECT * FROM VistaPedidos WHERE 1=1";
+
 if (!empty($fechaFiltro)) {
-    $query .= " AND Fecha = '" . $conn->real_escape_string($fechaFiltro) . "'";
+    $fecha = $conn->real_escape_string($fechaFiltro);
+    $query .= " AND DATE(Fecha) = '$fecha'";
 }
+
 if (!empty($estatusFiltro)) {
-    $query .= " AND Estatus = '" . $conn->real_escape_string($estatusFiltro) . "'";
+    $estatus = $conn->real_escape_string($estatusFiltro);
+    $query .= " AND Estatus = '$estatus'";
 }
+
 $query .= " ORDER BY Fecha DESC";
 
 // Ejecutar query
@@ -146,7 +151,6 @@ foreach ($pedidos as $p) {
             <?php endforeach; ?>
         </section>
 
-
     
     </main>
 </div>
@@ -186,9 +190,6 @@ function openModal(pedido) {
     html += `<p><strong>Total:</strong> $${total.toFixed(2)}</p>`;
     content.innerHTML = html;
 
-    // ==========================
-    //   OCULTAR/MOSTRAR BOTONES
-    // ==========================
     document.querySelector('.btn-cobrar').style.display =
     document.querySelector('#btnCancelar').style.display =
         (pedido.Estatus === 'Pendiente') ? 'inline-block' : 'none';

@@ -157,8 +157,9 @@ if ($resultCategorias) {
 
     <div class="top-actions">
         <a href="BolsaEmpleados.php">
-            <button class="icon-btn">🔔</button>
+             <button class="icon-btn">👜</button>
         </a>
+
 
         <div class="profile">
             <div>

@@ -112,7 +112,7 @@ $resultado = $conn->query($sql);
 
                     <div class="ingrediente-actions">
                         <a href="EditarIngredienteAdministradores.php?id=' . $row["idIngrediente"] . '" class="btn edit">Editar</a>
-                        <a href="EliminarIngredienteAdministradores.php?id=' . $row["idIngrediente"] . '" class="btn delete" onclick="return confirm(\'¿Eliminar ingrediente?\')">Eliminar</a>
+                        
                     </div>
                 </div>';
             }

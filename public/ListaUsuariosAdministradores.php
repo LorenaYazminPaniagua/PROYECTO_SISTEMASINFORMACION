@@ -108,9 +108,7 @@ $result = $conn->query($sql);
                                     <td><?= htmlspecialchars($usuario['Estatus']) ?></td>
                                     <td class="actions">
                                         <a href="EditarUsuarioAdministradores.php?id=<?= $usuario['idPersona'] ?>" class="btn edit">Editar</a>
-                                        <a href="EliminarUsuarioAdministrador.php?id=<?= $usuario['idPersona'] ?>" 
-                                           class="btn delete" 
-                                           onclick="return confirm('¿Eliminar usuario?')">Eliminar</a>
+
                                     </td>
                                 </tr>
                             <?php endwhile; ?>

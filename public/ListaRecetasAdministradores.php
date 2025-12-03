@@ -171,9 +171,7 @@ if ($result->num_rows > 0) {
 
                 <a href="EditarRecetaAdministradores.php?id=<?= $id ?>" class="btn edit">Editar</a>
 
-                <a href="EliminarRecetaAdministradores.php?id=<?= $id ?>" 
-                   class="btn delete"
-                   onclick="return confirm('¿Eliminar receta?')">Eliminar</a>
+
             </td>
         </tr>
 

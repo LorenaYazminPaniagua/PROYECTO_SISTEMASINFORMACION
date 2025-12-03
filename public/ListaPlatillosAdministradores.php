@@ -185,7 +185,7 @@ foreach ($platillos as $p):
 
                 <div class="card-actions">
                     <a href="EditarPlatilloAdministrador.php?id=<?= $p['idPlatillo'] ?>" class="btn-edit">✏️</a>
-                    <a href="EliminarPlatilloAdministrador.php?id=<?= $p['idPlatillo'] ?>" class="btn-delete">🗑️</a>
+                    
                 </div>
             </div>
 
